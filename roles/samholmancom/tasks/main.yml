@@ -1,0 +1,13 @@
+- file:      path=/var/www/vhosts/samholman state=directory owner=sam group=www-data
+
+- name:      Clone website
+  git:       repo=https://github.com/samholman/samholman.com.git dest=/var/www/vhosts/samholman
+  sudo:      yes
+  sudo_user: sam
+
+- name:      Install website dependencies
+  command:   composer install
+  args:
+    chdir:   /var/www/vhosts/samholman
+  sudo:      yes
+  sudo_user: sam
