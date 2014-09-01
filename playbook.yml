@@ -1,20 +1,17 @@
 - name:  Common configuration
   hosts: all
-  user:  root
 
   roles:
     - common
 
 - name:  Configure dev environment
   hosts: all
-  user:  root
 
   roles:
     - dev
 
 - name:  Configure web server, etc
   hosts: all
-  user:  root
 
   roles:
     - webserver

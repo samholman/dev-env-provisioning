@@ -1,8 +1,37 @@
-- name: Install zsh
-  apt:  name=zsh state=latest
+- user:       name=sam comment='Sam Holman' shell=/usr/bin/zsh groups=sudo append=yes generate_ssh_key=yes ssh_key_bits=2048
 
-- name: Install git
-  apt:  name=git state=latest
+- name:       Install common packages
+  action:     apt pkg={{ item }} state=latest
+  with_items:
+    - zsh
+    - vim
+    - git
+    - tig
+    - tmux
+    - silversearcher-ag
+    - exuberant-ctags
+    - rubygems-integration
+    - npm
 
-- name: Install tig
-  apt:  name=tig state=latest
+- name:       Install tmuxinator
+  action:     command gem install tmuxinator creates=/usr/local/bin/tmuxinator
+
+- name:       Install jshint
+  action:     command npm install -g jshint creates=/usr/local/bin/jshint
+
+- name:       Clone dotfiles
+  git:        repo=https://github.com/samholman/dotfiles.git dest=/home/sam/dotfiles
+  sudo:       yes
+  sudo_user:  sam
+
+- name:       Dotfile submodules
+  command:    git submodule update --init --recursive
+  args:
+    chdir:    /home/sam/dotfiles
+  sudo:       yes
+  sudo_user:  sam
+
+- name:       Dotfile setup
+  command:    /home/sam/dotfiles/setup.sh -f
+  sudo:       yes
+  sudo_user:  sam
