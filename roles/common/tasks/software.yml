@@ -1,0 +1,18 @@
+- name:       Install common packages
+  action:     apt pkg={{ item }} state=latest
+  with_items:
+    - zsh
+    - vim
+    - git
+    - tig
+    - tmux
+    - silversearcher-ag
+    - exuberant-ctags
+    - rubygems-integration
+    - npm
+
+- name:       Install tmuxinator
+  action:     command gem install tmuxinator creates=/usr/local/bin/tmuxinator
+
+- name:       Install jshint
+  action:     command npm install -g jshint creates=/usr/local/bin/jshint

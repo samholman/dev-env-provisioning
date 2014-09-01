@@ -3,15 +3,5 @@
 
   roles:
     - common
-
-- name:  Configure dev environment
-  hosts: all
-
-  roles:
     - dev
-
-- name:  Configure web server, etc
-  hosts: all
-
-  roles:
     - webserver

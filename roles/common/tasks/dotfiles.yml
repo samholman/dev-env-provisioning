@@ -1,0 +1,16 @@
+- name:      Clone dotfiles
+  git:       repo=https://github.com/samholman/dotfiles.git dest=/home/sam/dotfiles
+  sudo:      yes
+  sudo_user: sam
+
+- name:      Dotfile submodules
+  command:   git submodule update --init --recursive
+  args:
+    chdir:   /home/sam/dotfiles
+  sudo:      yes
+  sudo_user: sam
+
+- name:      Dotfile setup
+  command:   /home/sam/dotfiles/setup.sh -f
+  sudo:      yes
+  sudo_user: sam
