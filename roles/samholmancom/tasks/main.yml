@@ -5,9 +5,21 @@
   sudo:      yes
   sudo_user: sam
 
+- name:      Create content dir
+  file:      path=/var/www/vhosts/samholman/content state=directory
+  sudo:      yes
+  sudo_user: sam
+
 - name:      Install website dependencies
   command:   composer install
   args:
     chdir:   /var/www/vhosts/samholman
   sudo:      yes
   sudo_user: sam
+
+- name:      Setup vhost
+  template:  src=vhost dest=/etc/nginx/sites-available/samholman
+
+- name:      Symlink vhost
+  file:      src=/etc/nginx/sites-available/samholman dest=/etc/nginx/sites-enabled/samholman state=link
+  notify:    restart nginx

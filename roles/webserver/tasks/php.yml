@@ -4,3 +4,7 @@
     - php5-cli
     - php5-fpm
     - php5-curl
+
+- name:      Configure PHP
+  template:  src=php/fpm/php.ini dest=/etc/php5/fpm/php.ini
+  notify: restart php

@@ -1,0 +1,24 @@
+server {
+    server_name samholman.localhost dev.samholman.com samholman.com;
+    root /var/www/vhosts/samholman/public;
+
+    listen 80;
+
+    index index.php;
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+        expires 30d;
+        add_header Pragma public;
+        add_header Cache-Control "public";
+        log_not_found off;
+    }
+}
