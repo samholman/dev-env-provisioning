@@ -19,6 +19,11 @@
 - name:       Install jshint
   action:     command npm install -g jshint creates=/usr/local/bin/jshint
 
+- name:       SSHD config
+  template:   src=sshd_config dest=/etc/ssh/sshd_config
+  notify:     restart ssh
+
+# Dotfile setup
 - name:       Clone dotfiles
   git:        repo=https://github.com/samholman/dotfiles.git dest=/home/sam/dotfiles
   sudo:       yes
