@@ -1,0 +1,8 @@
+- name: Install zsh
+  apt:  name=zsh state=latest
+
+- name: Install git
+  apt:  name=git state=latest
+
+- name: Install tig
+  apt:  name=tig state=latest
