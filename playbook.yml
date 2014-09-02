@@ -1,8 +1,7 @@
-- name:  Common configuration
+- name:  Development configuration for samholman.com
   hosts: all
 
   roles:
     - common
-    - dev
     - webserver
     - samholmancom
