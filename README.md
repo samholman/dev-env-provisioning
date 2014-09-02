@@ -1,9 +1,15 @@
-# Dev environment
+# Sam's dev environment
+Configures a dev environment from a raw Ubuntu installation.
 
-## To set up (as root):
+Automatically sets up:
+
+* [Dotfiles](https://github.com/samholman/dotfiles)
+* [samholman.com](https://github.com/samholman/samholman.com)
+
+## Run as root:
 ```bash
 apt-get install git ansible
-git clone https://github.com/samholman/dev-env-provisioning.git ~/provisioning
-cd ~/provisioning
+git clone https://github.com/samholman/dev-env-provisioning.git ~/provisioning && cd ~/provisioning
 ansible-playbook playbook.yml -i hosts
 ```
+
