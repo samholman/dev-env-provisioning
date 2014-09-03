@@ -1,4 +1,4 @@
-- name:       Install common packages
+- name:       Install dotfile related packages
   action:     apt pkg={{ item }} state=latest
   with_items:
     - zsh

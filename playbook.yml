@@ -3,5 +3,6 @@
 
   roles:
     - common
+    - dotfiles
     - webserver
     - samholmancom
