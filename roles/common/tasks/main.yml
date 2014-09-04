@@ -1,2 +1,5 @@
+- name: Update apt cache
+  apt:  update_cache=yes
+
 - include: users.yml
 - include: ssh.yml
