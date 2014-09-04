@@ -1,6 +1,9 @@
 - name:    Update apt cache
   apt:     update_cache=yes
 
+- include: timezone.yml
+  vars:
+      timezone: 'Europe/London'
 - include: users.yml
 - include: ssh.yml
 - include: software.yml

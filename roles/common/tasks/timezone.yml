@@ -1,0 +1,13 @@
+- name:     Check current timezone
+  action:   command cat /etc/timezone
+  register: current_zone
+
+- name:   Set intended timezone
+  copy:   content={{timezone}}
+          dest=/etc/timezone
+          owner=root
+          group=root
+          mode=0644
+          backup=yes
+  when:   current_zone.stdout != timezone
+  notify: update timezone
