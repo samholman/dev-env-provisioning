@@ -1,0 +1,8 @@
+- name:       Install fail2ban
+  action:     apt pkg={{ item }} state=latest
+  with_items:
+    - fail2ban
+
+- name:       Configure fail2ban
+  template:   src=fail2ban/jail.local dest=/etc/fail2ban/jail.local
+  notify:     restart fail2ban
