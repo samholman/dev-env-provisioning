@@ -1,3 +1,5 @@
+- file:      path=/home/sam/dotfiles state=directory owner=sam group=sam
+
 - name:      Clone dotfiles
   git:       repo=https://github.com/samholman/dotfiles.git dest=/home/sam/dotfiles
   sudo:      yes

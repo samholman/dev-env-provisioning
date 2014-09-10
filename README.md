@@ -8,8 +8,9 @@ Automatically sets up:
 
 ## Run as root:
 ```bash
-apt-get install git ansible
-git clone https://github.com/samholman/dev-env-provisioning.git ~/provisioning && cd ~/provisioning
+apt-get install -y git ansible && \
+git clone https://github.com/samholman/dev-env-provisioning.git ~/provisioning && \
+cd ~/provisioning && \
 ansible-playbook playbook.yml -i hosts
 ```
 
