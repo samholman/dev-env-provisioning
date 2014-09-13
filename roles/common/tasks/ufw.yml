@@ -1,0 +1,6 @@
+- name:       Configure ufw
+  template:   src=ufw/{{ item }} dest=/lib/ufw/{{ item }}
+  with_items:
+      - user.rules
+      - user6.rules
+  notify:     restart ufw

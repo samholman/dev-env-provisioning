@@ -8,3 +8,4 @@
 - include: ssh.yml
 - include: software.yml
 - include: fail2ban.yml
+- include: ufw.yml
