@@ -1,5 +1,6 @@
 - name:       Install common packages
   action:     apt pkg={{ item }} state=latest
   with_items:
-    - sendmail
     - mosh
+    - htop
+    - sendmail
