@@ -9,3 +9,7 @@
 
 - name:    restart ufw
   service: name=ufw state=restarted
+  notify:  enable ufw
+
+- name:    enable ufw
+  command: ufw --force enable
